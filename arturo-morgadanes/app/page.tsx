@@ -9,6 +9,7 @@ import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { TrustBadges } from "@/components/ui/TrustBadges";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { services } from "@/content/services";
+import { cities } from "@/content/cities";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 import type { Testimonial } from "@/lib/data";
@@ -180,24 +181,13 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "Vigo",
-              "Pontevedra",
-              "Nigrán",
-              "Redondela",
-              "Gondomar",
-              "Cangas",
-              "Moaña",
-              "Baiona",
-              "Mos",
-              "Tui",
-            ].map((city) => (
+            {cities.map((city) => (
               <Link
-                key={city}
-                href={`/zona-servicio/${city.toLowerCase()}`}
+                key={city.slug}
+                href={`/zona-servicio/${city.slug}`}
                 className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors"
               >
-                {city}
+                {city.name}
               </Link>
             ))}
           </div>

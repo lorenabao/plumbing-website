@@ -2,6 +2,8 @@
 
 Step-by-step guide for updating and maintaining the Arturo Morgadanes website.
 
+All commands in this guide assume you're in the `arturo-morgadanes/` project folder (where `package.json` lives).
+
 ---
 
 ## Table of Contents
@@ -21,13 +23,13 @@ Step-by-step guide for updating and maintaining the Arturo Morgadanes website.
 
 ### Most Common Updates
 
-| Task | File | Time |
+| Task | Where | Time |
 |------|------|------|
-| Change phone number | `content/site.config.ts` | 2 min |
-| Update prices | `content/services.ts` | 5 min |
-| Add testimonial | `content/testimonials.ts` | 3 min |
-| Add gallery photo | `content/gallery.ts` + images | 5 min |
-| Update hours | `content/site.config.ts` | 2 min |
+| Update business info (phone/email/hours/stats) | `data/business.json` (via `/admin`) + `content/site.config.ts` | 3-5 min |
+| Add/edit testimonials | `data/testimonials.json` (via `/admin`) | 3-5 min |
+| Update prices / services | `content/services.ts` | 5-10 min |
+| Add gallery item | `content/gallery.ts` + `public/images/gallery/` | 5-10 min |
+| Update service areas (cities) | `content/cities.ts` | 5 min |
 
 ### Update Workflow
 
@@ -42,9 +44,53 @@ Step-by-step guide for updating and maintaining the Arturo Morgadanes website.
 
 ## Content Updates
 
+### Where Content Lives (Important)
+
+This project has **two** content sources:
+
+1. **Static, code-managed content (commit + deploy)**
+   - `content/` (services, cities, gallery, SEO defaults)
+   - `public/images/` (images used by services + gallery)
+
+2. **Admin-edited JSON (also commit + deploy)**
+   - `data/business.json` (business configuration used by `/api/public/business`)
+   - `data/testimonials.json` (testimonials used by `/api/public/testimonials`)
+
+The admin panel is a **local content editor** that writes to files in `data/`. On Vercel (serverless), filesystem writes are not reliable/persistent, so the safe workflow is: **edit locally → commit → push → Vercel deploys**.
+
+### Using the Admin Panel (Business + Testimonials)
+
+1. Configure admin auth in `.env.local` (see `.env.local.example`):
+   - `ADMIN_PASSWORD_HASH`
+   - `JWT_SECRET`
+   - Generate a password hash: `node scripts/generate-password-hash.js "your-password"`
+   - Generate a JWT secret: `openssl rand -base64 32`
+2. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+3. Open:
+   - Login: `http://localhost:3000/admin/login`
+   - Business editor: `http://localhost:3000/admin/business`
+   - Testimonials editor: `http://localhost:3000/admin/testimonials`
+4. Save your changes in the UI.
+5. Commit the updated JSON files:
+   ```bash
+   git add data/business.json data/testimonials.json
+   git commit -m "Update business info and testimonials"
+   git push
+   ```
+
 ### Changing Business Information
 
-**File:** `content/site.config.ts`
+Business info currently exists in **two places**:
+
+- `data/business.json` (editable via `/admin/business`; used by the homepage and components that fetch `/api/public/business`)
+- `content/site.config.ts` (used by header/footer, contact page metadata, and other server-rendered content that imports `business`)
+
+To avoid inconsistencies, update **both** when changing phone/email/hours/stats.
+
+**File (static defaults):** `content/site.config.ts`
 
 ```typescript
 export const siteConfig = {
@@ -73,6 +119,8 @@ export const siteConfig = {
 };
 ```
 
+**File (admin-edited JSON):** `data/business.json`
+
 ### Updating Service Prices
 
 **File:** `content/services.ts`
@@ -91,24 +139,24 @@ Find the service and update:
 
 ### Adding a New Testimonial
 
-**File:** `content/testimonials.ts`
+**File:** `data/testimonials.json` (recommended) or use `/admin/testimonials`
 
-Add at the **TOP** of the array:
+Add at the **TOP** of the array (newest first):
 
-```typescript
-export const testimonials: Testimonial[] = [
-  // ↓ ADD NEW ONES HERE ↓
-  {
-    name: "New Customer Name",
-    location: "Vigo",
-    service: "Desatascos",
-    rating: 5,
-    text: "Great service! Very professional...",
-    date: "2025-01",  // YYYY-MM format
-  },
-  // existing testimonials below...
-];
+```json
+{
+  "name": "New Customer Name",
+  "location": "Vigo",
+  "service": "Desatascos",
+  "serviceEn": "Drain Cleaning",
+  "rating": 5,
+  "text": "Great service! Very professional...",
+  "textEn": "Great service! Very professional...",
+  "date": "2025-01"
+}
 ```
+
+Note: `content/testimonials.ts` is used for types/helpers (e.g., translations), but the homepage loads testimonials from `data/testimonials.json` via `/api/public/testimonials`.
 
 ### Adding a Gallery Item
 
@@ -406,7 +454,8 @@ rm -rf .next && npm run build
 | Item | Location | Backup Method |
 |------|----------|---------------|
 | Code | GitHub | Automatic (git push) |
-| Content | `content/` folder | Git history |
+| Static content | `content/` folder | Git history |
+| Admin-edited content | `data/` folder | Git history |
 | Images | `public/images/` | Git history |
 | Env vars | Vercel dashboard | Document separately |
 
@@ -430,6 +479,8 @@ git revert <commit-hash>
 Keep a secure copy of:
 - `RESEND_API_KEY`
 - `RESEND_DOMAIN`
+- `ADMIN_PASSWORD_HASH`
+- `JWT_SECRET`
 - `NEXT_PUBLIC_GA_ID`
 - `NEXT_PUBLIC_CAL_LINK`
 

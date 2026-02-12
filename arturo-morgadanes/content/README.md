@@ -1,14 +1,14 @@
 # Content Management Guide
 
-This folder contains all the website content. Edit these files to update the website.
+This folder contains most of the website's **static** content. Some admin-editable content is stored in `../data/`.
 
 ## Quick Start
 
 | What to Update | File to Edit |
 |----------------|--------------|
-| Business info, phone, email | `site.config.ts` |
+| Business info, phone, email | `site.config.ts` + `../data/business.json` (or `/admin/business`) |
 | Service prices & descriptions | `services.ts` |
-| Customer reviews | `testimonials.ts` |
+| Customer reviews | `../data/testimonials.json` (or `/admin/testimonials`) |
 | Portfolio/gallery images | `gallery.ts` |
 | Service areas/cities | `cities.ts` |
 
@@ -24,6 +24,8 @@ The most important file. Contains:
 - Statistics (years experience, jobs completed)
 - SEO keywords
 
+Note: The homepage also reads business info from `data/business.json` via `/api/public/business`. Keep `site.config.ts` and `data/business.json` in sync to avoid inconsistent phone/email/hours across pages.
+
 ```typescript
 // Example: Change phone number
 contact: {
@@ -35,7 +37,11 @@ contact: {
 
 ### `testimonials.ts` - Customer Reviews
 
-Add new reviews at the TOP of the array (newest first).
+This file contains types/helpers and an example list, but the live testimonials shown on the homepage are loaded from `data/testimonials.json` via `/api/public/testimonials`.
+
+To update testimonials:
+- Use `/admin/testimonials` (recommended when running locally), or
+- Edit `../data/testimonials.json` directly (newest first), then commit + push.
 
 ```typescript
 // Copy this template to add a new review:
@@ -120,7 +126,13 @@ priceRange: "NEW PRICE",
 ```
 
 ### Add a Testimonial
-Edit `testimonials.ts`, add at TOP of array.
+Recommended (local):
+- Open `/admin/testimonials` (writes to `../data/testimonials.json`)
+
+Or edit manually:
+- Update `../data/testimonials.json` (add newest first), then commit + deploy
+
+Note: `testimonials.ts` contains types/helpers and an example list, but it is **not** the live data source shown on the homepage.
 
 ### Add Gallery Item
 1. Add images to `public/images/gallery/`

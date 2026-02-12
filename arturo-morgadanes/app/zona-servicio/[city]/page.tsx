@@ -8,6 +8,21 @@ import { business } from "@/content/business";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { ContactForm } from "@/components/ui/ContactForm";
 
+function normalizeCityName(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function findCityByNameOrSlug(value: string) {
+  const normalized = normalizeCityName(value);
+  return cities.find(
+    (c) =>
+      normalizeCityName(c.name) === normalized || normalizeCityName(c.slug) === normalized
+  );
+}
+
 interface Props {
   params: Promise<{ city: string }>;
 }
@@ -144,15 +159,27 @@ export default async function CityPage({ params }: Props) {
                 Zonas cercanas
               </h3>
               <div className="flex flex-wrap gap-2">
-                {city.nearbyAreas.map((area) => (
-                  <Link
-                    key={area}
-                    href={`/zona-servicio/${area.toLowerCase()}`}
-                    className="text-blue-700 hover:underline text-sm"
-                  >
-                    {area}
-                  </Link>
-                ))}
+                {city.nearbyAreas.map((area) => {
+                  const match = findCityByNameOrSlug(area);
+
+                  if (!match) {
+                    return (
+                      <span key={area} className="text-gray-700 text-sm">
+                        {area}
+                      </span>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={area}
+                      href={`/zona-servicio/${match.slug}`}
+                      className="text-blue-700 hover:underline text-sm"
+                    >
+                      {area}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

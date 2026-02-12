@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Droplets, Wrench, Gauge, Flame, Bath, Siren } from "lucide-react";
 import type { Service } from "@/content/services";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -20,6 +22,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   const { locale, t } = useLanguage();
+  const [hasImageError, setHasImageError] = useState(false);
 
   // Get icon from map
   const IconComponent = iconMap[service.icon as keyof typeof iconMap];
@@ -35,13 +38,23 @@ export function ServiceCard({ service }: ServiceCardProps) {
       href={`/servicios/${service.slug}`}
       className="group block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300"
     >
-      {/* Image placeholder */}
       <div className="relative h-48 bg-gradient-to-br from-blue-100 to-blue-50">
-        <div className="absolute inset-0 flex items-center justify-center">
-          {IconComponent && (
-            <IconComponent className="w-16 h-16 text-blue-300" />
-          )}
-        </div>
+        {!hasImageError && service.image ? (
+          <Image
+            src={service.image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            onError={() => setHasImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            {IconComponent && (
+              <IconComponent className="w-16 h-16 text-blue-300" />
+            )}
+          </div>
+        )}
         {service.isEmergency && (
           <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
             24H

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ArrowLeftRight } from "lucide-react";
 import type { GalleryItem } from "@/content/gallery";
 
@@ -10,19 +11,34 @@ interface GalleryCardProps {
 
 export function GalleryCard({ item }: GalleryCardProps) {
   const [showAfter, setShowAfter] = useState(false);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  const currentImage = showAfter ? item.afterImage : item.beforeImage;
+  const currentLabel = showAfter ? "Después" : "Antes";
+  const hasImageError = failedImages[currentImage] === true;
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       {/* Image Container */}
       <div className="relative aspect-[4/3] bg-gray-100">
-        {/* Before/After Toggle Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-gray-400">
-            <span className="text-lg font-medium">
-              {showAfter ? "Después" : "Antes"}
-            </span>
+        {!hasImageError ? (
+          <Image
+            src={currentImage}
+            alt={`${item.title} - ${currentLabel}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            onError={() =>
+              setFailedImages((prev) => ({ ...prev, [currentImage]: true }))
+            }
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-gray-400">
+              <span className="text-lg font-medium">{currentLabel}</span>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Toggle Button */}
         <button

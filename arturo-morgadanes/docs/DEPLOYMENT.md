@@ -2,6 +2,8 @@
 
 Complete guide for deploying, updating, and maintaining the plumber website.
 
+Note: In this workspace repo, the Next.js app lives in the `arturo-morgadanes/` subfolder. If you import the repo into Vercel, set the project **Root Directory** to `arturo-morgadanes`.
+
 ---
 
 ## Table of Contents
@@ -51,18 +53,29 @@ Git
 
 ### Step 1: Update Business Information
 
-Edit `content/business.ts`:
+Business info is currently used in **two places**:
+
+- `content/site.config.ts` (static defaults used by header/footer, SEO, and the contact form recipient)
+- `data/business.json` (used by `/api/public/business` and editable via `/admin/business`)
+
+Update both to avoid inconsistencies.
+
+Edit `content/site.config.ts`:
 
 ```typescript
-export const business = {
+export const siteConfig = {
   name: "Arturo Morgadanes",
-  phone: "+34 XXX XXX XXX",        // Real phone number
-  whatsapp: "34XXXXXXXXX",          // WhatsApp (no + prefix)
-  email: "info@arturomorgadanes.es",
-  address: "Vigo, Pontevedra",
-  // ... update all fields
+  contact: {
+    phone: "+34 XXX XXX XXX",        // Real phone number
+    whatsapp: "34XXXXXXXXX",         // WhatsApp (no + prefix)
+    email: "info@arturomorgadanes.es",
+    address: "Vigo, Pontevedra, Galicia",
+  },
+  // ... update other fields as needed
 };
 ```
+
+Then update `data/business.json` (recommended via the admin panel when running locally).
 
 ### Step 2: Update Legal Information
 
@@ -138,16 +151,24 @@ npm start
 
 3. Click **"Add New Project"** → Import repository
 
-4. Configure environment variables:
+4. (Monorepo) In Project Settings → General, set **Root Directory** to `arturo-morgadanes`
+
+5. Configure environment variables:
 
    | Variable | Value | Required |
    |----------|-------|----------|
    | `RESEND_API_KEY` | `re_xxxxxxxxxx` | Yes |
    | `RESEND_DOMAIN` | `arturomorgadanes.es` | Yes |
+   | `ADMIN_PASSWORD_HASH` | `bcrypt-hash` | Yes (admin) |
+   | `JWT_SECRET` | `random 32+ chars` | Yes (security) |
    | `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | Optional |
    | `NEXT_PUBLIC_CAL_LINK` | `cal-username` | Optional |
 
-5. Click **"Deploy"**
+   Generate values:
+   - `ADMIN_PASSWORD_HASH`: `node scripts/generate-password-hash.js "your-password"`
+   - `JWT_SECRET`: `openssl rand -base64 32`
+
+6. Click **"Deploy"**
 
 ### Option B: Via CLI
 
@@ -164,6 +185,8 @@ vercel
 # Add environment variables
 vercel env add RESEND_API_KEY
 vercel env add RESEND_DOMAIN
+vercel env add ADMIN_PASSWORD_HASH
+vercel env add JWT_SECRET
 
 # Deploy to production
 vercel --prod
@@ -245,11 +268,21 @@ Add these records for email delivery:
 
 ### Updating Business Info
 
-Edit `content/business.ts` and push:
+Business info updates require keeping these in sync:
+
+- `data/business.json` (homepage + `/api/public/business`)
+- `content/site.config.ts` (header/footer, SEO, contact page + contact form recipient)
+
+Recommended workflow (local admin editor):
+1. Run `npm run dev`
+2. Login at `/admin/login`
+3. Edit business info at `/admin/business` (saves to `data/business.json`)
+4. Update `content/site.config.ts` to match
+5. Commit + push
 
 ```bash
-git add content/business.ts
-git commit -m "Update phone number"
+git add data/business.json content/site.config.ts
+git commit -m "Update business info"
 git push
 ```
 
@@ -269,11 +302,11 @@ export const services: Service[] = [
 
 ### Updating Prices
 
-Prices are in each service's `features` array in `content/services.ts`.
+Prices are in each service's `priceRange` field (and optionally `duration`) in `content/services.ts`.
 
 ### Updating Testimonials
 
-Edit `content/testimonials.ts` to add/modify reviews.
+Use `/admin/testimonials` (writes to `data/testimonials.json`) or edit `data/testimonials.json` directly, then commit + push.
 
 ### Updating Gallery
 
@@ -288,7 +321,8 @@ export const galleryItems: GalleryItem[] = [
     description: "Descripción",
     beforeImage: "/images/gallery/before.jpg",
     afterImage: "/images/gallery/after.jpg",
-    category: "bathroom",
+    service: "Reforma de baño",
+    date: "2025-01",
   },
 ];
 ```
@@ -528,10 +562,12 @@ npm run lint
 
 | Purpose | File |
 |---------|------|
-| Business info | `content/business.ts` |
+| Business defaults (SEO/header/footer) | `content/site.config.ts` |
+| Business JSON (homepage + admin) | `data/business.json` |
 | Services | `content/services.ts` |
 | Cities | `content/cities.ts` |
-| Testimonials | `content/testimonials.ts` |
+| Testimonials JSON (homepage + admin) | `data/testimonials.json` |
+| Testimonials helpers/types | `content/testimonials.ts` |
 | Gallery | `content/gallery.ts` |
 | Layout | `app/layout.tsx` |
 | Homepage | `app/page.tsx` |
@@ -542,6 +578,8 @@ npm run lint
 |----------|-------------|
 | `RESEND_API_KEY` | Email service API key |
 | `RESEND_DOMAIN` | Verified email domain |
+| `ADMIN_PASSWORD_HASH` | bcrypt hash for admin login |
+| `JWT_SECRET` | JWT signing secret for admin auth |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID |
 | `NEXT_PUBLIC_CAL_LINK` | Cal.com username |
 

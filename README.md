@@ -18,4 +18,4 @@ npm run dev
 
 ## Deployment
 
-See `arturo-morgadanes/docs/DEPLOYMENT.md`.
+See `arturo-morgadanes/docs/README.md` (index). For initial setup: `arturo-morgadanes/docs/DEPLOYMENT.md`. For content updates: `arturo-morgadanes/docs/MAINTENANCE.md`.

@@ -73,7 +73,7 @@ A professional Spanish-language website for "Arturo Morgadanes", a plumber servi
 | Decision | Rationale |
 |----------|-----------|
 | Static Generation | Fast loading, SEO-friendly, low cost |
-| No CMS | Zero maintenance, content in TypeScript files |
+| No external CMS/DB | Content in TypeScript + git-tracked JSON; optional local admin editor |
 | App Router | Latest Next.js patterns, better SEO |
 | Tailwind CSS | Rapid development, consistent styling |
 | Resend | Simple email API, good deliverability |
@@ -84,6 +84,10 @@ A professional Spanish-language website for "Arturo Morgadanes", a plumber servi
 # Required
 RESEND_API_KEY=re_xxxxxxxxxx
 RESEND_DOMAIN=arturomorgadanes.es
+
+# Admin (recommended)
+ADMIN_PASSWORD_HASH=$2a$12$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+JWT_SECRET=your-random-secret-key-change-in-production
 
 # Optional
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
@@ -103,119 +107,168 @@ arturo-morgadanes/
 │   ├── not-found.tsx             # 404 page
 │   ├── robots.ts                 # Robots.txt generator
 │   ├── sitemap.ts                # Sitemap generator
+│   ├── admin/                    # Admin UI (login + editors)
+│   │   ├── login/page.tsx
+│   │   ├── business/page.tsx
+│   │   └── testimonials/page.tsx
 │   ├── api/
-│   │   └── contact/
-│   │       └── route.ts          # Contact form API endpoint
-│   ├── contacto/
-│   │   └── page.tsx              # Contact page
-│   ├── galeria/
-│   │   └── page.tsx              # Gallery page
-│   ├── politica-cookies/
-│   │   └── page.tsx              # Cookie policy (GDPR)
-│   ├── politica-privacidad/
-│   │   └── page.tsx              # Privacy policy (GDPR)
-│   ├── servicios/
-│   │   ├── page.tsx              # Services listing
-│   │   └── [slug]/
-│   │       └── page.tsx          # Dynamic service pages
-│   ├── sobre-mi/
-│   │   └── page.tsx              # About page
-│   └── zona-servicio/
-│       └── [city]/
-│           └── page.tsx          # Dynamic city landing pages
-├── components/
-│   ├── analytics/
-│   │   └── GoogleAnalytics.tsx   # GA4 with Consent Mode v2
-│   ├── gdpr/
-│   │   └── CookieConsent.tsx     # Cookie consent banner
-│   ├── layout/
-│   │   ├── Header.tsx            # Site header
-│   │   ├── Footer.tsx            # Site footer
-│   │   └── MobileNav.tsx         # Mobile navigation
-│   ├── seo/
-│   │   ├── LocalBusinessSchema.tsx  # Schema.org markup
-│   │   └── ServiceSchema.tsx        # Service schema
-│   └── ui/
-│       ├── CallButton.tsx        # Floating call button
-│       ├── ContactForm.tsx       # Contact form component
-│       ├── HeroSection.tsx       # Hero section
-│       ├── TestimonialCard.tsx   # Testimonial display
-│       ├── TrustBadges.tsx       # Trust indicators
-│       └── WhatsAppButton.tsx    # Floating WhatsApp button
-├── content/                      # Content data files
-│   ├── business.ts               # Business information
-│   ├── cities.ts                 # Service area cities
-│   ├── gallery.ts                # Gallery items
+│   │   ├── contact/route.ts      # Contact form API endpoint
+│   │   ├── auth/                 # Admin auth
+│   │   │   ├── login/route.ts
+│   │   │   └── logout/route.ts
+│   │   ├── public/               # Public JSON endpoints
+│   │   │   ├── business/route.ts
+│   │   │   └── testimonials/route.ts
+│   │   └── admin/                # Protected admin JSON endpoints
+│   │       ├── business/route.ts
+│   │       └── testimonials/route.ts
+│   └── ...                       # Site pages (contacto, servicios, etc.)
+├── components/                   # UI + layout + SEO components
+├── content/                      # Static content (TypeScript)
+│   ├── site.config.ts            # Static business defaults (SEO/header/footer)
 │   ├── services.ts               # Services data
-│   └── testimonials.ts           # Customer reviews
-├── lib/
-│   └── utils.ts                  # Utility functions
-├── public/
-│   └── images/                   # Static images
-├── DEPLOYMENT.md                 # Deployment guide
-├── PRD.md                        # This document
-├── package.json
+│   ├── cities.ts                 # Service areas
+│   ├── gallery.ts                # Gallery items
+│   └── testimonials.ts           # Types/helpers (live data is in data/)
+├── data/                         # Admin-edited JSON (commit + deploy)
+│   ├── business.json
+│   ├── testimonials.json
+│   └── README.md
+├── lib/                          # Shared helpers
+│   ├── auth.ts                   # Admin auth helpers (JWT + cookies)
+│   ├── data.ts                   # Read/write JSON in data/
+│   ├── email.ts                  # Resend email helper
+│   └── i18n/                     # i18n utilities
+├── public/                       # Static assets
+│   └── images/
+├── scripts/
+│   └── generate-password-hash.js
+├── middleware.ts                 # Protects /admin and /api/admin
+├── docs/                         # Documentation
+├── next.config.js
+├── postcss.config.mjs
 ├── tailwind.config.ts
-└── tsconfig.json
+├── tsconfig.json
+└── vercel.json
 ```
 
 ---
 
 ## Content Management
 
-### Content Files
+### Content Sources
 
-All content is managed through TypeScript files in the `content/` directory. This approach provides:
+There are two sources of content:
 
-- Type safety
-- No database needed
-- Version control for content
-- Zero runtime cost
+1. `content/` (TypeScript, **commit + deploy**) — services, cities, gallery, and static business defaults (`content/site.config.ts`)
+2. `data/` (JSON, **commit + deploy**) — business + testimonials edited via the admin panel and served from `/api/public/*`
 
-### Business Information (`content/business.ts`)
+Important: Vercel serverless functions do not provide reliable persistent filesystem writes. The admin panel is intended as a **local editor**; deploy updates by committing the JSON changes.
+
+### Business Configuration
+
+- Static defaults: `content/site.config.ts` (used by header/footer, SEO metadata, contact form recipient)
+- Live JSON: `data/business.json` (served by `GET /api/public/business`, editable via `/admin/business`)
 
 ```typescript
-export const business = {
-  name: string;           // Business name
-  phone: string;          // Phone with country code
-  whatsapp: string;       // WhatsApp number (no +)
-  email: string;          // Contact email
-  address: string;        // Physical address
-  tagline: string;        // Short description
-  experience: number;     // Years of experience
-  serviceRadius: string;  // Service area description
+// Shape of data/business.json (see lib/data.ts)
+export interface BusinessConfig {
+  name: string;
+  title: string;
+  tagline: string;
+  url: string;
+  contact: {
+    phone: string;
+    whatsapp: string;
+    email: string;
+    address: string;
+  };
   hours: {
     weekdays: string;
     saturday: string;
     sunday: string;
   };
-};
+  stats: {
+    experience: number;
+    jobsCompleted: number;
+    googleReviewScore: number;
+    googleReviewCount: number;
+  };
+  certifications: string[];
+  serviceArea: {
+    radius: string;
+    coordinates: { latitude: number; longitude: number };
+  };
+  social: { facebook: string; instagram: string; linkedin: string };
+  keywords: string[];
+}
+```
+
+Note: Some server-rendered pages/components still import `business` from `content/site.config.ts`. Keep `data/business.json` and `content/site.config.ts` in sync to avoid inconsistent phone/email/hours across pages.
+
+### Testimonials (`data/testimonials.json`)
+
+Testimonials displayed on the homepage are loaded from `data/testimonials.json` via `GET /api/public/testimonials` (editable via `/admin/testimonials`).
+
+```typescript
+// Shape of items in data/testimonials.json (see lib/data.ts)
+export interface Testimonial {
+  name: string;
+  location: string;
+  service: string;
+  serviceEn?: string;
+  rating: number;
+  text: string;
+  textEn?: string;
+  date: string; // YYYY-MM
+}
 ```
 
 ### Services (`content/services.ts`)
 
 ```typescript
-interface Service {
-  slug: string;           // URL slug
-  name: string;           // Service name
+export interface Service {
+  slug: string;
+  name: string;
+  nameEn?: string;
   shortDescription: string;
-  description: string;    // Full description
-  icon: string;           // Lucide icon name
-  image: string;          // Image path
-  features: string[];     // Service features
-  callToAction: string;   // CTA text
+  shortDescriptionEn?: string;
+  description: string; // Markdown
+  priceRange: string;
+  duration: string;
+  icon: string; // Lucide icon name
+  image: string;
+  gallery?: string[];
+  isEmergency?: boolean;
+  faqs: Array<{ question: string; answer: string }>;
 }
 ```
 
 ### Cities (`content/cities.ts`)
 
 ```typescript
-interface City {
-  slug: string;           // URL slug
-  name: string;           // City name
-  description: string;    // SEO description
-  areas: string[];        // Neighborhoods/areas
-  distance: string;       // Distance from base
+export interface City {
+  slug: string;
+  name: string;
+  province: string;
+  postalCodes: string[];
+  responseTime: string;
+  localContent: string; // Markdown
+  nearbyAreas: string[];
+}
+```
+
+### Gallery (`content/gallery.ts`)
+
+```typescript
+export interface GalleryItem {
+  id: string;
+  title: string;
+  description: string;
+  beforeImage: string;
+  afterImage: string;
+  service: string;
+  date: string; // YYYY-MM
 }
 ```
 
@@ -228,30 +281,31 @@ interface City {
 **File:** `components/ui/ContactForm.tsx`
 
 Features:
-- Client-side validation
-- Rate limiting (5 submissions per hour)
-- Honeypot spam protection
+- Basic client-side required fields
+- Server-side validation + sanitization
+- Server-side rate limiting (5 submissions per hour per IP)
 - Success/error feedback
 - Spanish language
 
 Fields:
-- Name (required)
-- Phone (required, Spanish format)
+- Nombre (required)
+- Teléfono (required)
 - Email (optional)
-- Service type (select)
-- Message (required)
+- Servicio (select)
+- Mensaje (optional)
+- Urgente (checkbox)
 
 ### Floating Action Buttons
 
 **WhatsApp Button** (`components/ui/WhatsAppButton.tsx`)
 - Fixed position bottom-right
 - Opens WhatsApp with pre-filled message
-- Tracks clicks in GA4
+- Tracking helper available in `components/analytics/GoogleAnalytics.tsx` (not wired by default)
 
 **Call Button** (`components/ui/CallButton.tsx`)
 - Fixed position bottom-right (above WhatsApp)
 - Click-to-call on mobile
-- Tracks clicks in GA4
+- Tracking helper available in `components/analytics/GoogleAnalytics.tsx` (not wired by default)
 
 ### Cookie Consent
 
@@ -279,37 +333,57 @@ Features:
 
 ## API Endpoints
 
-### POST `/api/contact`
+### Public (read-only)
 
-**Purpose:** Handle contact form submissions
+- `GET /api/public/business` → `BusinessConfig`
+- `GET /api/public/testimonials` → `Testimonial[]`
+
+### Admin Auth
+
+- `POST /api/auth/login` — body `{ password: string }`, sets `admin_token` cookie
+- `POST /api/auth/logout` — clears `admin_token` cookie
+
+### Admin Content (protected)
+
+- `GET /api/admin/business`
+- `PUT /api/admin/business`
+- `GET /api/admin/testimonials`
+- `POST /api/admin/testimonials`
+- `PUT /api/admin/testimonials`
+- `DELETE /api/admin/testimonials`
+
+Admin routes are protected by `middleware.ts` and require a valid `admin_token` cookie.
+
+### Contact Form
+
+**Endpoint:** `POST /api/contact`
 
 **Request Body:**
 ```typescript
 {
-  name: string;
-  phone: string;
+  nombre: string;
+  telefono: string;
   email?: string;
-  service: string;
-  message: string;
-  honeypot?: string;  // Must be empty
+  servicio?: string;
+  mensaje?: string;
+  urgente?: boolean;
 }
 ```
 
 **Response:**
 ```typescript
 // Success (200)
-{ success: true, message: string }
+{ success: true }
 
 // Error (400/429/500)
 { error: string }
 ```
 
 **Features:**
-- Input validation
-- Rate limiting by IP
-- Honeypot spam detection
-- Email via Resend API
-- Spanish response messages
+- Input validation (nombre + telefono required)
+- Rate limiting by IP (5/hour)
+- Input sanitization
+- Email delivery via Resend API
 
 ---
 
@@ -519,8 +593,8 @@ This section provides guidance for Claude Code or other AI assistants working on
 ### Project Understanding
 
 1. **Language**: UI is in Spanish, code comments in English
-2. **Content**: All managed in `content/` TypeScript files
-3. **No CMS**: Content changes require code deployment
+2. **Content**: `content/` (TypeScript) + `data/` (JSON). Business/testimonials can be edited via `/admin` locally and committed.
+3. **No external CMS/DB**: Updates are git-based (commit + deploy)
 4. **Static First**: Most pages are statically generated
 
 ### Common Tasks
@@ -545,8 +619,9 @@ This section provides guidance for Claude Code or other AI assistants working on
 #### Updating Business Info
 
 ```bash
-# Edit content/business.ts
-# All components import from here
+# Keep these in sync:
+# - content/site.config.ts (header/footer/SEO/contact recipient)
+# - data/business.json (homepage + /api/public/business; editable via /admin/business locally)
 ```
 
 #### Modifying Contact Form
@@ -566,7 +641,7 @@ This section provides guidance for Claude Code or other AI assistants working on
 | SEO | `app/layout.tsx`, `components/seo/*` |
 | Analytics | `components/analytics/GoogleAnalytics.tsx` |
 | GDPR | `components/gdpr/CookieConsent.tsx` |
-| Content | `content/*.ts` |
+| Content | `content/*.ts`, `data/*.json` |
 
 ### Code Patterns to Follow
 
@@ -595,7 +670,7 @@ Changes pushed to `main` branch auto-deploy to Vercel.
 1. Don't add database dependencies
 2. Don't change content structure without updating all references
 3. Don't remove GDPR compliance features
-4. Don't hardcode business info outside `content/business.ts`
+4. Don't duplicate business info; keep `content/site.config.ts` and `data/business.json` consistent
 5. Don't use inline styles (use Tailwind)
 
 ### Questions to Ask User
@@ -618,7 +693,7 @@ When making changes, clarify:
 | Service pages | 6 |
 | City pages | 6 |
 | Legal pages | 2 |
-| API routes | 1 |
+| API routes | 7 |
 | **Total** | **23+** |
 
 ### Third-Party Dependencies
