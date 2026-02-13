@@ -98,7 +98,7 @@ export const siteConfig = {
   tagline: "Fontanero de confianza",   // Tagline
 
   contact: {
-    phone: "+34 666 123 456",          // Main phone
+    phone: "+34 608 022 766",          // Main phone
     whatsapp: "34666123456",           // WhatsApp (no +)
     email: "info@arturomorgadanes.es", // Email
     address: "Vigo, Pontevedra",       // Address
