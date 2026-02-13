@@ -26,7 +26,7 @@ export function HeroSection() {
   const googleReviewScore = business?.stats?.googleReviewScore || 4.9;
   const googleReviewCount = business?.stats?.googleReviewCount || 127;
   const experience = business?.stats?.experience || 15;
-  const phone = business?.contact?.phone || "+34 608 022 766";
+  const phone = business?.contact?.phone || "+34 629 464 508";
   const whatsapp = business?.contact?.whatsapp || "34666123456";
 
   const whatsappMessage = encodeURIComponent(t("hero", "whatsappMessage"));

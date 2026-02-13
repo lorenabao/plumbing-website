@@ -204,7 +204,7 @@ export default function BusinessPage() {
                   })
                 }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="+34 608 022 766"
+                placeholder="+34 629 464 508"
                 required
               />
             </div>

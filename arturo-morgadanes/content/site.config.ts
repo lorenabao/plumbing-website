@@ -48,7 +48,7 @@ export const siteConfig = {
      * Phone number with country code
      * Format: +34 XXX XXX XXX
      */
-    phone: "+34 608 022 766",
+    phone: "+34 629 464 508",
 
     /**
      * WhatsApp number (numbers only, no spaces or +)

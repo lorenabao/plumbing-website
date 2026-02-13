@@ -46,7 +46,7 @@ export default function HomePage() {
 
   // Default values while loading
   const businessName = business?.name || "Arturo Morgadanes";
-  const businessPhone = business?.contact?.phone || "+34 608 022 766";
+  const businessPhone = business?.contact?.phone || "+34 629 464 508";
   const businessExperience = business?.stats?.experience || 15;
   const businessJobsCompleted = business?.stats?.jobsCompleted || 2000;
   const businessGoogleScore = business?.stats?.googleReviewScore || 4.9;
