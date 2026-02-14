@@ -99,7 +99,7 @@ export const siteConfig = {
 
   contact: {
     phone: "+34 629 464 508",          // Main phone
-    whatsapp: "34666123456",           // WhatsApp (no +)
+    whatsapp: "34629464508",           // WhatsApp (no +)
     email: "info@arturomorgadanes.es", // Email
     address: "Vigo, Pontevedra",       // Address
   },

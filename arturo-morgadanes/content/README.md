@@ -30,7 +30,7 @@ Note: The homepage also reads business info from `data/business.json` via `/api/
 // Example: Change phone number
 contact: {
   phone: "+34 629 464 508",  // ← Change this
-  whatsapp: "34666123456",   // ← Numbers only, no +
+  whatsapp: "34629464508",   // ← Numbers only, no +
   ...
 }
 ```

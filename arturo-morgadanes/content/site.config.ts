@@ -54,7 +54,7 @@ export const siteConfig = {
      * WhatsApp number (numbers only, no spaces or +)
      * Format: 34XXXXXXXXX
      */
-    whatsapp: "34666123456",
+    whatsapp: "34629464508",
 
     /**
      * Email address
