@@ -531,7 +531,7 @@ npm run lint
 |---------|------|
 | Vercel Hosting | €0 |
 | Resend Email (3k/mo) | €0 |
-| Domain (.es) | ~€1 (€10-12/year) |
+| Domain (.com) | ~€1 (€10-12/year) |
 | **Total** | **~€1/month** |
 
 ### Optional Upgrades
