@@ -15,7 +15,7 @@ export async function sendEmail({ to, subject, html }: SendEmailParams) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: `Web <noreply@${process.env.RESEND_DOMAIN || "arturomorgadanes.es"}>`,
+      from: `Web <noreply@${process.env.RESEND_DOMAIN || "arturomorgadanes.com"}>`,
       to,
       subject,
       html,

@@ -98,7 +98,7 @@ export async function POST(request: Request) {
 
     // Send email notification
     await resend.emails.send({
-      from: `Web <noreply@${process.env.RESEND_DOMAIN || "arturomorgadanes.es"}>`,
+      from: `Web <noreply@${process.env.RESEND_DOMAIN || "arturomorgadanes.com"}>`,
       to: business.email,
       subject: urgente
         ? `🚨 URGENTE: Nueva solicitud de ${safeNombre}`
@@ -182,7 +182,7 @@ export async function POST(request: Request) {
               }
             </div>
             <div class="footer">
-              <p>Enviado desde arturomorgadanes.es el ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}</p>
+              <p>Enviado desde arturomorgadanes.com el ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}</p>
             </div>
           </div>
         </body>

@@ -34,7 +34,7 @@ Note: In this workspace repo, the Next.js app lives in the `arturo-morgadanes/` 
 
 ### Required Assets
 
-- Domain name (e.g., `arturomorgadanes.es`)
+- Domain name (e.g., `arturomorgadanes.com`)
 - Business information (phone, email, address)
 - NIF/NIE for legal pages
 - Photos for gallery and services
@@ -68,7 +68,7 @@ export const siteConfig = {
   contact: {
     phone: "+34 XXX XXX XXX",        // Real phone number
     whatsapp: "34XXXXXXXXX",         // WhatsApp (no + prefix)
-    email: "info@arturomorgadanes.es",
+    email: "info@arturomorgadanes.com",
     address: "Vigo, Pontevedra, Galicia",
   },
   // ... update other fields as needed
@@ -158,7 +158,7 @@ npm start
    | Variable | Value | Required |
    |----------|-------|----------|
    | `RESEND_API_KEY` | `re_xxxxxxxxxx` | Yes |
-   | `RESEND_DOMAIN` | `arturomorgadanes.es` | Yes |
+   | `RESEND_DOMAIN` | `arturomorgadanes.com` | Yes |
    | `ADMIN_PASSWORD_HASH` | `bcrypt-hash` | Yes (admin) |
    | `JWT_SECRET` | `random 32+ chars` | Yes (security) |
    | `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | Optional |
@@ -205,8 +205,8 @@ After initial setup, Vercel automatically deploys:
 ### Add Domain in Vercel
 
 1. Project Settings → Domains
-2. Add `arturomorgadanes.es`
-3. Add `www.arturomorgadanes.es`
+2. Add `arturomorgadanes.com`
+3. Add `www.arturomorgadanes.com`
 
 ### DNS Records
 
@@ -247,7 +247,7 @@ Add these records for email delivery:
 
 1. Add property at [search.google.com/search-console](https://search.google.com/search-console)
 2. Verify via DNS or HTML tag
-3. Submit sitemap: `https://arturomorgadanes.es/sitemap.xml`
+3. Submit sitemap: `https://arturomorgadanes.com/sitemap.xml`
 
 ### Google My Business
 
@@ -467,13 +467,13 @@ Analytics configured with:
 
 ```bash
 # Check site is live
-curl -I https://arturomorgadanes.es
+curl -I https://arturomorgadanes.com
 
 # Check sitemap
-curl https://arturomorgadanes.es/sitemap.xml
+curl https://arturomorgadanes.com/sitemap.xml
 
 # Check robots.txt
-curl https://arturomorgadanes.es/robots.txt
+curl https://arturomorgadanes.com/robots.txt
 ```
 
 ---

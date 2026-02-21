@@ -100,7 +100,7 @@ export const siteConfig = {
   contact: {
     phone: "+34 629 464 508",          // Main phone
     whatsapp: "34629464508",           // WhatsApp (no +)
-    email: "info@arturomorgadanes.es", // Email
+    email: "info@arturomorgadanes.com", // Email
     address: "Vigo, Pontevedra",       // Address
   },
 
@@ -379,13 +379,13 @@ Or via Vercel Dashboard:
 
 ```bash
 # Check site is live
-curl -I https://arturomorgadanes.es
+curl -I https://arturomorgadanes.com
 
 # Check sitemap
-curl https://arturomorgadanes.es/sitemap.xml
+curl https://arturomorgadanes.com/sitemap.xml
 
 # Check robots.txt
-curl https://arturomorgadanes.es/robots.txt
+curl https://arturomorgadanes.com/robots.txt
 ```
 
 ### Monitoring Dashboards

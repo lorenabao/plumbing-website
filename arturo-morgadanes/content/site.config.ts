@@ -37,7 +37,7 @@ export const siteConfig = {
   /**
    * Website URL - used for SEO and sitemap
    */
-  url: "https://arturomorgadanes.es",
+  url: "https://arturomorgadanes.com",
 
   // ===========================================================================
   // CONTACT INFORMATION
@@ -59,7 +59,7 @@ export const siteConfig = {
     /**
      * Email address
      */
-    email: "info@arturomorgadanes.es",
+    email: "info@arturomorgadanes.com",
 
     /**
      * Physical address

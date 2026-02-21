@@ -9,8 +9,8 @@ export function LocalBusinessSchema() {
     description: business.tagline,
     telephone: business.phone,
     email: business.email,
-    url: "https://arturomorgadanes.es",
-    image: "https://arturomorgadanes.es/og-image.jpg",
+    url: "https://arturomorgadanes.com",
+    image: "https://arturomorgadanes.com/og-image.jpg",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Vigo",

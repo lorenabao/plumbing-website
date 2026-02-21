@@ -14,7 +14,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arturomorgadanes.es"),
+  metadataBase: new URL("https://arturomorgadanes.com"),
   title: {
     default: `${business.name} - Fontanero en Vigo | Urgencias 24h`,
     template: `%s | ${business.name}`,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://arturomorgadanes.es",
+    url: "https://arturomorgadanes.com",
     siteName: business.name,
     title: `${business.name} - Fontanero en Vigo`,
     description: business.tagline,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     google: "YOUR_GOOGLE_VERIFICATION_CODE",
   },
   alternates: {
-    canonical: "https://arturomorgadanes.es",
+    canonical: "https://arturomorgadanes.com",
   },
 };
 

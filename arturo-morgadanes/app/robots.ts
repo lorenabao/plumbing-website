@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://arturomorgadanes.es/sitemap.xml",
+    sitemap: "https://arturomorgadanes.com/sitemap.xml",
   };
 }

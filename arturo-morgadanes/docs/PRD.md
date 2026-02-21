@@ -83,7 +83,7 @@ A professional Spanish-language website for "Arturo Morgadanes", a plumber servi
 ```env
 # Required
 RESEND_API_KEY=re_xxxxxxxxxx
-RESEND_DOMAIN=arturomorgadanes.es
+RESEND_DOMAIN=arturomorgadanes.com
 
 # Admin (recommended)
 ADMIN_PASSWORD_HASH=$2a$12$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

@@ -5,7 +5,7 @@ import { cities } from "@/content/cities";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://arturomorgadanes.es";
+  const baseUrl = "https://arturomorgadanes.com";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
