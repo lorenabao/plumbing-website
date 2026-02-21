@@ -101,7 +101,7 @@ export const siteConfig = {
     phone: "+34 629 464 508",          // Main phone
     whatsapp: "34629464508",           // WhatsApp (no +)
     email: "info@arturomorgadanes.com", // Email
-    address: "Vigo, Pontevedra",       // Address
+    address: "Gondomar, Pontevedra",       // Address
   },
 
   hours: {
@@ -146,7 +146,7 @@ Add at the **TOP** of the array (newest first):
 ```json
 {
   "name": "New Customer Name",
-  "location": "Vigo",
+  "location": "Gondomar",
   "service": "Desatascos",
   "serviceEn": "Drain Cleaning",
   "rating": 5,
@@ -229,7 +229,7 @@ Add new city object:
 
 Content for the city page...
   `,
-  nearbyAreas: ["Vigo", "Other City"],
+  nearbyAreas: ["Gondomar", "Other City"],
 },
 ```
 

@@ -17,14 +17,14 @@ export function ServiceSchema({ service }: ServiceSchemaProps) {
       telephone: business.phone,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Vigo",
+        addressLocality: "Gondomar",
         addressRegion: "Pontevedra",
         addressCountry: "ES",
       },
     },
     areaServed: {
       "@type": "City",
-      name: "Vigo",
+      name: "Gondomar",
     },
     offers: {
       "@type": "Offer",

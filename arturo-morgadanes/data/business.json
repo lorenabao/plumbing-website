@@ -1,13 +1,13 @@
 {
   "name": "Arturo Morgadanes",
   "title": "Fontanero Profesional",
-  "tagline": "Fontanero de confianza en Vigo y alrededores",
+  "tagline": "Fontanero de confianza en Gondomar y alrededores",
   "url": "https://arturomorgadanes.com",
   "contact": {
     "phone": "+34 629 464 508",
     "whatsapp": "34629464508",
     "email": "info@arturomorgadanes.com",
-    "address": "Vigo, Pontevedra, Galicia"
+    "address": "Gondomar, Pontevedra, Galicia"
   },
   "hours": {
     "weekdays": "08:00 - 20:00",
@@ -25,7 +25,7 @@
     "Seguro de responsabilidad civil"
   ],
   "serviceArea": {
-    "radius": "30 km desde Vigo",
+    "radius": "30 km desde Gondomar",
     "coordinates": {
       "latitude": 42.2406,
       "longitude": -8.7207
@@ -38,14 +38,14 @@
   },
   "keywords": [
     "arturo morgadanes",
-    "fontanero vigo",
-    "fontanero urgente vigo",
-    "desatascos vigo",
-    "fontanería vigo",
-    "reparación fugas vigo",
+    "fontanero Gondomar",
+    "fontanero urgente Gondomar",
+    "desatascos Gondomar",
+    "fontanería Gondomar",
+    "reparación fugas Gondomar",
     "fontanero pontevedra",
-    "fontanero 24 horas vigo",
-    "fontanero profesional vigo",
-    "plumber vigo"
+    "fontanero 24 horas Gondomar",
+    "fontanero profesional Gondomar",
+    "plumber Gondomar"
   ]
 }

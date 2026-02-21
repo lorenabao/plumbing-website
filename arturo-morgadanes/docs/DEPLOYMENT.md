@@ -69,7 +69,7 @@ export const siteConfig = {
     phone: "+34 XXX XXX XXX",        // Real phone number
     whatsapp: "34XXXXXXXXX",         // WhatsApp (no + prefix)
     email: "info@arturomorgadanes.com",
-    address: "Vigo, Pontevedra, Galicia",
+    address: "Gondomar, Pontevedra, Galicia",
   },
   // ... update other fields as needed
 };

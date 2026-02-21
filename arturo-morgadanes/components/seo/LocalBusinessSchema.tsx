@@ -13,7 +13,7 @@ export function LocalBusinessSchema() {
     image: "https://arturomorgadanes.com/og-image.jpg",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Vigo",
+      addressLocality: "Gondomar",
       addressRegion: "Pontevedra",
       addressCountry: "ES",
     },

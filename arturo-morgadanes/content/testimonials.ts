@@ -42,7 +42,7 @@ export const testimonials: Testimonial[] = [
 
   {
     name: "María García",
-    location: "Vigo",
+    location: "Gondomar",
     service: "Desatascos",
     serviceEn: "Drain Cleaning",
     rating: 5,
@@ -72,7 +72,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "José Manuel López",
-    location: "Vigo",
+    location: "Gondomar",
     service: "Reforma de baño",
     serviceEn: "Bathroom Renovation",
     rating: 5,
@@ -102,7 +102,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Carmen Pérez",
-    location: "Vigo",
+    location: "Gondomar",
     service: "Desatascos",
     serviceEn: "Drain Cleaning",
     rating: 5,
@@ -132,7 +132,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Antonio Gómez",
-    location: "Vigo",
+    location: "Gondomar",
     service: "Reforma de baño",
     serviceEn: "Bathroom Renovation",
     rating: 5,

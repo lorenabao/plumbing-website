@@ -55,8 +55,8 @@ export const translations = {
   // ===========================================================================
   hero: {
     title: {
-      es: "Fontanero Profesional en Vigo",
-      en: "Professional Plumber in Vigo",
+      es: "Fontanero Profesional en Gondomar",
+      en: "Professional Plumber in Gondomar",
     },
     subtitle: {
       es: "Servicio de fontanería de confianza para hogares y negocios",
@@ -77,7 +77,7 @@ export const translations = {
     noObligation: { es: "Presupuesto sin compromiso", en: "No-obligation quote" },
     callNow: { es: "Llamar Ahora", en: "Call Now" },
     whatsappMessage: { es: "Hola, necesito un fontanero para...", en: "Hello, I need a plumber for..." },
-    tagline: { es: "Fontanero de confianza en Vigo y alrededores", en: "Trusted plumber in Vigo and surroundings" },
+    tagline: { es: "Fontanero de confianza en Gondomar y alrededores", en: "Trusted plumber in Gondomar and surroundings" },
   },
 
   // ===========================================================================
@@ -110,7 +110,7 @@ export const translations = {
     },
     callMeNow: { es: "Llámeme Ahora", en: "Call Me Now" },
     serviceAreas: { es: "Zonas de Servicio", en: "Service Areas" },
-    serviceAreasSubtitle: { es: "Atiendo en Vigo y alrededores (30 km)", en: "I serve Vigo and surrounding areas (30 km)" },
+    serviceAreasSubtitle: { es: "Atiendo en Gondomar y alrededores (30 km)", en: "I serve Gondomar and surrounding areas (30 km)" },
     needPlumber: { es: "¿Necesita un fontanero?", en: "Need a plumber?" },
     needPlumberText: {
       es: "Contacte conmigo para cualquier problema de fontanería. Le respondo lo antes posible con un presupuesto sin compromiso.",
@@ -217,8 +217,8 @@ export const translations = {
   // ===========================================================================
   footer: {
     tagline: {
-      es: "Fontanero de confianza en Vigo y alrededores",
-      en: "Trusted plumber in Vigo and surroundings",
+      es: "Fontanero de confianza en Gondomar y alrededores",
+      en: "Trusted plumber in Gondomar and surroundings",
     },
     servicesTitle: { es: "Servicios", en: "Services" },
     hoursTitle: { es: "Horario", en: "Hours" },
@@ -231,8 +231,8 @@ export const translations = {
     cookieSettings: { es: "Configuración de Cookies", en: "Cookie Settings" },
     rights: { es: "Todos los derechos reservados.", en: "All rights reserved." },
     professional: {
-      es: "Fontanero profesional en Vigo y alrededores.",
-      en: "Professional plumber in Vigo and surroundings.",
+      es: "Fontanero profesional en Gondomar y alrededores.",
+      en: "Professional plumber in Gondomar and surroundings.",
     },
   },
 

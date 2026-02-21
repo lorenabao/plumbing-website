@@ -21,7 +21,7 @@
  */
 
 export interface City {
-  slug: string; // URL path (e.g., "vigo" -> /zona-servicio/vigo)
+  slug: string; // URL path (e.g., "Gondomar" -> /zona-servicio/Gondomar)
   name: string; // Display name
   province: string; // Province name
   postalCodes: string[]; // Postal codes covered
@@ -32,11 +32,11 @@ export interface City {
 
 export const cities: City[] = [
   // ===========================================================================
-  // CITY 1: VIGO (Main service area)
+  // CITY 1: Gondomar (Main service area)
   // ===========================================================================
   {
-    slug: "vigo",
-    name: "Vigo",
+    slug: "Gondomar",
+    name: "Gondomar",
     province: "Pontevedra",
     postalCodes: [
       "36201",
@@ -52,13 +52,13 @@ export const cities: City[] = [
     ],
     responseTime: "30 minutos",
     localContent: `
-## Fontanero en Vigo - Servicio Profesional
+## Fontanero en Gondomar - Servicio Profesional
 
-Soy Arturo Morgadanes, fontanero profesional con más de 15 años de experiencia trabajando en Vigo y su área metropolitana. Ofrezco servicios de fontanería a domicilio en todos los barrios de Vigo con rapidez y garantía.
+Soy Arturo Morgadanes, fontanero profesional con más de 15 años de experiencia trabajando en Gondomar y su área metropolitana. Ofrezco servicios de fontanería a domicilio en todos los barrios de Gondomar con rapidez y garantía.
 
-### Zonas de Vigo donde trabajo
+### Zonas de Gondomar donde trabajo
 
-Cubro todos los barrios y zonas de Vigo:
+Cubro todos los barrios y zonas de Gondomar:
 
 - **Centro**: Casco Vello, Príncipe, Areal
 - **Zona este**: Teis, Lavadores, Bembrive
@@ -66,17 +66,17 @@ Cubro todos los barrios y zonas de Vigo:
 - **Zona sur**: Coruxo, Oia, Sárdoma
 - **Zona norte**: Castrelos, Zamáns, Valladares
 
-### ¿Por qué elegirme como su fontanero en Vigo?
+### ¿Por qué elegirme como su fontanero en Gondomar?
 
-- **Experiencia local**: Conozco las instalaciones típicas de los edificios de Vigo
+- **Experiencia local**: Conozco las instalaciones típicas de los edificios de Gondomar
 - **Rapidez**: En urgencias, llego en menos de 30 minutos
 - **Precios justos**: Presupuesto sin compromiso antes de empezar
 - **Garantía**: Todos mis trabajos tienen garantía por escrito
 - **Limpieza**: Dejo su casa como la encontré
 
-### Servicios más demandados en Vigo
+### Servicios más demandados en Gondomar
 
-Por las características de las viviendas de Vigo, los servicios más habituales son:
+Por las características de las viviendas de Gondomar, los servicios más habituales son:
 
 1. **Desatascos**: Especialmente en edificios antiguos del centro
 2. **Reparación de fugas**: Debido a la humedad de la zona
@@ -98,7 +98,7 @@ Llámeme para cualquier consulta o urgencia. Atiendo personalmente todas las lla
     localContent: `
 ## Fontanero en Pontevedra
 
-Ofrezco servicios de fontanería profesional en Pontevedra capital y sus alrededores. Aunque mi base está en Vigo, atiendo regularmente a clientes en Pontevedra con la misma calidad y profesionalidad.
+Ofrezco servicios de fontanería profesional en Pontevedra capital y sus alrededores. Aunque mi base está en Gondomar, atiendo regularmente a clientes en Pontevedra con la misma calidad y profesionalidad.
 
 ### Servicios en Pontevedra
 
@@ -111,7 +111,7 @@ Ofrezco servicios de fontanería profesional en Pontevedra capital y sus alreded
 
 ### Zonas que cubro en Pontevedra
 
-Trabajo en toda la ciudad de Pontevedra y municipios cercanos como Poio, Marín y Sanxenxo. El tiempo de desplazamiento desde Vigo es de aproximadamente 30 minutos, lo que me permite ofrecer un servicio rápido también en esta zona.
+Trabajo en toda la ciudad de Pontevedra y municipios cercanos como Poio, Marín y Sanxenxo. El tiempo de desplazamiento desde Gondomar es de aproximadamente 30 minutos, lo que me permite ofrecer un servicio rápido también en esta zona.
 
 ### ¿Por qué llamarme desde Pontevedra?
 
@@ -120,7 +120,7 @@ Trabajo en toda la ciudad de Pontevedra y municipios cercanos como Poio, Marín 
 - Garantía en todos los trabajos
 - Atención personalizada
 
-Contacte conmigo para cualquier problema de fontanería en Pontevedra. Le atenderé con la misma rapidez y profesionalidad que a mis clientes de Vigo.
+Contacte conmigo para cualquier problema de fontanería en Pontevedra. Le atenderé con la misma rapidez y profesionalidad que a mis clientes de Gondomar.
     `,
     nearbyAreas: ["Poio", "Marín", "Sanxenxo", "Vilagarcía"],
   },
@@ -133,7 +133,7 @@ Contacte conmigo para cualquier problema de fontanería en Pontevedra. Le atende
     localContent: `
 ## Fontanero en Nigrán
 
-Nigrán es una de las zonas donde más trabajo debido a su cercanía con Vigo. Atiendo tanto a viviendas unifamiliares como a comunidades de vecinos en toda la zona costera.
+Nigrán es una de las zonas donde más trabajo debido a su cercanía con Gondomar. Atiendo tanto a viviendas unifamiliares como a comunidades de vecinos en toda la zona costera.
 
 ### Particularidades de Nigrán
 
@@ -162,7 +162,7 @@ Además de los servicios habituales de fontanería, en Nigrán ofrezco:
 
 Si tiene una segunda residencia en Nigrán, puedo realizar revisiones periódicas para evitar sorpresas cuando venga a disfrutar de su casa.
     `,
-    nearbyAreas: ["Vigo", "Baiona", "Gondomar"],
+    nearbyAreas: ["Gondomar", "Baiona", "Gondomar"],
   },
   {
     slug: "redondela",
@@ -173,7 +173,7 @@ Si tiene una segunda residencia en Nigrán, puedo realizar revisiones periódica
     localContent: `
 ## Fontanero en Redondela
 
-Redondela está a solo 15 minutos de mi base en Vigo, lo que me permite ofrecer un servicio muy rápido en toda la zona. Trabajo tanto en el núcleo urbano como en las parroquias rurales del municipio.
+Redondela está a solo 15 minutos de mi base en Gondomar, lo que me permite ofrecer un servicio muy rápido en toda la zona. Trabajo tanto en el núcleo urbano como en las parroquias rurales del municipio.
 
 ### Servicios en Redondela
 
@@ -196,9 +196,9 @@ Cubro todas las parroquias de Redondela:
 
 ### Rapidez de respuesta
 
-Al estar tan cerca de Vigo, puedo llegar a Redondela en menos de 20 minutos para urgencias. Para trabajos programados, le ofrezco flexibilidad horaria para adaptarme a su agenda.
+Al estar tan cerca de Gondomar, puedo llegar a Redondela en menos de 20 minutos para urgencias. Para trabajos programados, le ofrezco flexibilidad horaria para adaptarme a su agenda.
     `,
-    nearbyAreas: ["Vigo", "Soutomaior", "Mos", "Pontevedra"],
+    nearbyAreas: ["Gondomar", "Soutomaior", "Mos", "Pontevedra"],
   },
   {
     slug: "cangas",
@@ -234,7 +234,7 @@ Debido al tiempo de desplazamiento, para trabajos pequeños en Cangas suelo agru
 
 Si tiene un trabajo programado en Cangas, contácteme con antelación para poder organizarme y ofrecerle el mejor horario.
     `,
-    nearbyAreas: ["Moaña", "Bueu", "Vigo"],
+    nearbyAreas: ["Moaña", "Bueu", "Gondomar"],
   },
   {
     slug: "gondomar",
@@ -245,7 +245,7 @@ Si tiene un trabajo programado en Cangas, contácteme con antelación para poder
     localContent: `
 ## Fontanero en Gondomar
 
-Gondomar es uno de los municipios donde más trabajo, debido a su cercanía con Vigo y al crecimiento urbanístico de los últimos años. Atiendo tanto viviendas nuevas como edificaciones más antiguas.
+Gondomar es uno de los municipios donde más trabajo, debido a su cercanía con Gondomar y al crecimiento urbanístico de los últimos años. Atiendo tanto viviendas nuevas como edificaciones más antiguas.
 
 ### Servicios en Gondomar
 
@@ -276,6 +276,6 @@ Gondomar tiene muchos chalets y viviendas unifamiliares, que requieren servicios
 
 Contacte conmigo para cualquier necesidad de fontanería en Gondomar.
     `,
-    nearbyAreas: ["Vigo", "Nigrán", "Tui", "Mos"],
+    nearbyAreas: ["Gondomar", "Nigrán", "Tui", "Mos"],
   },
 ];

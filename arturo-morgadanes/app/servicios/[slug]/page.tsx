@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
 
   return {
-    title: `${service.name} en Vigo - ${service.priceRange}`,
-    description: `${service.shortDescription} Servicio profesional de ${service.name.toLowerCase()} en Vigo y alrededores. ${service.priceRange}. Llámenos: ${business.phone}`,
+    title: `${service.name} en Gondomar - ${service.priceRange}`,
+    description: `${service.shortDescription} Servicio profesional de ${service.name.toLowerCase()} en Gondomar y alrededores. ${service.priceRange}. Llámenos: ${business.phone}`,
     openGraph: {
-      title: `${service.name} en Vigo | ${business.name}`,
+      title: `${service.name} en Gondomar | ${business.name}`,
       description: service.shortDescription,
     },
   };
@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: Props) {
               )}
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {service.name} en Vigo
+              {service.name} en Gondomar
             </h1>
             <p className="text-lg text-gray-700 mb-6">
               {service.shortDescription}

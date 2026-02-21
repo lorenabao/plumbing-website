@@ -16,21 +16,21 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://arturomorgadanes.com"),
   title: {
-    default: `${business.name} - Fontanero en Vigo | Urgencias 24h`,
+    default: `${business.name} - Fontanero en Gondomar | Urgencias 24h`,
     template: `%s | ${business.name}`,
   },
   description: `${business.tagline}. Más de ${business.experience} años de experiencia. Desatascos, fugas, reformas de baños. Presupuesto sin compromiso. ${business.phone}`,
   keywords: [
     "arturo morgadanes",
-    "fontanero vigo",
-    "fontanero urgente vigo",
-    "desatascos vigo",
-    "fontanería vigo",
-    "reparación fugas vigo",
+    "fontanero Gondomar",
+    "fontanero urgente Gondomar",
+    "desatascos Gondomar",
+    "fontanería Gondomar",
+    "reparación fugas Gondomar",
     "fontanero pontevedra",
-    "fontanero 24 horas vigo",
-    "fontanero profesional vigo",
-    "plumber vigo",
+    "fontanero 24 horas Gondomar",
+    "fontanero profesional Gondomar",
+    "plumber Gondomar",
   ],
   authors: [{ name: business.name }],
   creator: business.name,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "https://arturomorgadanes.com",
     siteName: business.name,
-    title: `${business.name} - Fontanero en Vigo`,
+    title: `${business.name} - Fontanero en Gondomar`,
     description: business.tagline,
     images: [
       {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${business.name} - Fontanero en Vigo`,
+    title: `${business.name} - Fontanero en Gondomar`,
     description: business.tagline,
     images: ["/og-image.jpg"],
   },

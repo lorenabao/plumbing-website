@@ -62,9 +62,9 @@ export const services: Service[] = [
       "/images/gallery/desatasco-2.jpg",
     ],
     description: `
-## Servicio Profesional de Desatascos en Vigo
+## Servicio Profesional de Desatascos en Gondomar
 
-Ofrezco un servicio profesional de desatascos en Vigo y alrededores. Utilizo equipos de alta presión y cámaras de inspección para localizar y eliminar cualquier obstrucción en sus tuberías de forma rápida y efectiva.
+Ofrezco un servicio profesional de desatascos en Gondomar y alrededores. Utilizo equipos de alta presión y cámaras de inspección para localizar y eliminar cualquier obstrucción en sus tuberías de forma rápida y efectiva.
 
 ### ¿Qué incluye el servicio?
 
@@ -125,7 +125,7 @@ Disponemos de **servicio de urgencias 24 horas** para desatascos que no pueden e
     icon: "Wrench",
     image: "/images/services/fugas.jpg",
     description: `
-## Reparación de Fugas de Agua en Vigo
+## Reparación de Fugas de Agua en Gondomar
 
 Las fugas de agua son uno de los problemas más comunes en fontanería y, si no se tratan a tiempo, pueden causar daños importantes en su vivienda.
 
@@ -184,7 +184,7 @@ Una pequeña fuga puede desperdiciar más de 10.000 litros de agua al año. Adem
     icon: "Gauge",
     image: "/images/services/griferia.jpg",
     description: `
-## Instalación de Grifería en Vigo
+## Instalación de Grifería en Gondomar
 
 ¿Quiere renovar los grifos de su cocina o baño? Ofrezco un servicio completo de instalación y sustitución de grifería.
 
@@ -240,7 +240,7 @@ Instalo grifería de cualquier marca: Roca, Grohe, Hansgrohe, Tres, Genebre, y c
     icon: "Flame",
     image: "/images/services/calentador.jpg",
     description: `
-## Instalación y Cambio de Calentadores en Vigo
+## Instalación y Cambio de Calentadores en Gondomar
 
 ¿Su calentador ya no calienta como antes? Soy especialista en la instalación y sustitución de calentadores de agua.
 
@@ -301,7 +301,7 @@ Instalo grifería de cualquier marca: Roca, Grohe, Hansgrohe, Tres, Genebre, y c
       "/images/gallery/reforma-3.jpg",
     ],
     description: `
-## Reforma de Baños en Vigo
+## Reforma de Baños en Gondomar
 
 ¿Sueña con un baño nuevo? Ofrezco un servicio integral de reforma de baños.
 
@@ -357,7 +357,7 @@ Instalo grifería de cualquier marca: Roca, Grohe, Hansgrohe, Tres, Genebre, y c
     image: "/images/services/urgencias.jpg",
     isEmergency: true,
     description: `
-## Fontanero de Urgencias 24 Horas en Vigo
+## Fontanero de Urgencias 24 Horas en Gondomar
 
 Cuando tiene una emergencia de fontanería, cada minuto cuenta. Servicio disponible 24/7.
 
@@ -371,7 +371,7 @@ Cuando tiene una emergencia de fontanería, cada minuto cuenta. Servicio disponi
 
 ### Tiempo de respuesta
 
-Estoy en su domicilio en **30-60 minutos** en Vigo y alrededores.
+Estoy en su domicilio en **30-60 minutos** en Gondomar y alrededores.
 
 ### Cómo funciona
 

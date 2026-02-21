@@ -32,7 +32,7 @@ export const siteConfig = {
   /**
    * Short tagline - used in SEO and hero section
    */
-  tagline: "Fontanero de confianza en Vigo y alrededores",
+  tagline: "Fontanero de confianza en Gondomar y alrededores",
 
   /**
    * Website URL - used for SEO and sitemap
@@ -64,7 +64,7 @@ export const siteConfig = {
     /**
      * Physical address
      */
-    address: "Vigo, Pontevedra, Galicia",
+    address: "Gondomar, Pontevedra, Galicia",
   },
 
   // ===========================================================================
@@ -119,7 +119,7 @@ export const siteConfig = {
     /**
      * Description of service radius
      */
-    radius: "30 km desde Vigo",
+    radius: "30 km desde Gondomar",
 
     /**
      * Main city coordinates (for schema.org)
@@ -150,15 +150,15 @@ export const siteConfig = {
    */
   keywords: [
     "arturo morgadanes",
-    "fontanero vigo",
-    "fontanero urgente vigo",
-    "desatascos vigo",
-    "fontanería vigo",
-    "reparación fugas vigo",
+    "fontanero Gondomar",
+    "fontanero urgente Gondomar",
+    "desatascos Gondomar",
+    "fontanería Gondomar",
+    "reparación fugas Gondomar",
     "fontanero pontevedra",
-    "fontanero 24 horas vigo",
-    "fontanero profesional vigo",
-    "plumber vigo",
+    "fontanero 24 horas Gondomar",
+    "fontanero profesional Gondomar",
+    "plumber Gondomar",
   ],
 };
 

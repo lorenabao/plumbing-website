@@ -28,7 +28,7 @@
 
 ### Purpose
 
-A professional Spanish-language website for "Arturo Morgadanes", a plumber serving Vigo and surrounding areas in Galicia, Spain. The site is designed for lead generation through contact forms, WhatsApp, and phone calls.
+A professional Spanish-language website for "Arturo Morgadanes", a plumber serving Gondomar and surrounding areas in Galicia, Spain. The site is designed for lead generation through contact forms, WhatsApp, and phone calls.
 
 ### Business Goals
 
@@ -39,7 +39,7 @@ A professional Spanish-language website for "Arturo Morgadanes", a plumber servi
 
 ### Target Audience
 
-- Homeowners in Vigo and surrounding cities
+- Homeowners in Gondomar and surrounding cities
 - Property managers
 - Businesses needing plumbing services
 - Spanish-speaking users (primary language: Spanish)

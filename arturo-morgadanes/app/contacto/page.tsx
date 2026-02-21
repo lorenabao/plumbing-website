@@ -5,7 +5,7 @@ import { business } from "@/content/business";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: `Contacte con ${business.name}, fontanero profesional en Vigo. Teléfono: ${business.phone}. Presupuesto sin compromiso. Servicio de urgencias 24 horas.`,
+  description: `Contacte con ${business.name}, fontanero profesional en Gondomar. Teléfono: ${business.phone}. Presupuesto sin compromiso. Servicio de urgencias 24 horas.`,
 };
 
 export default function ContactoPage() {

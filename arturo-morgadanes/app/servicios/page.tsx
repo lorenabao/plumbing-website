@@ -4,7 +4,7 @@ import { services } from "@/content/services";
 import { business } from "@/content/business";
 
 export const metadata: Metadata = {
-  title: "Servicios de Fontanería en Vigo",
+  title: "Servicios de Fontanería en Gondomar",
   description: `Servicios profesionales de fontanería: desatascos, reparación de fugas, instalación de grifería, cambio de calentadores y reformas de baños. ${business.phone}`,
 };
 
@@ -19,7 +19,7 @@ export default function ServiciosPage() {
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Ofrezco una amplia gama de servicios de fontanería profesional en
-            Vigo y alrededores. Presupuesto sin compromiso.
+            Gondomar y alrededores. Presupuesto sin compromiso.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import { business } from "@/content/business";
 
 export const metadata: Metadata = {
   title: "Sobre Mí",
-  description: `Conozca a ${business.name}, fontanero profesional con más de ${business.experience} años de experiencia en Vigo y alrededores. Instalador autorizado con seguro de responsabilidad civil.`,
+  description: `Conozca a ${business.name}, fontanero profesional con más de ${business.experience} años de experiencia en Gondomar y alrededores. Instalador autorizado con seguro de responsabilidad civil.`,
 };
 
 export default function SobreMiPage() {
@@ -17,7 +17,7 @@ export default function SobreMiPage() {
             Sobre Mí
           </h1>
           <p className="text-xl text-gray-600">
-            {business.title} en Vigo y alrededores
+            {business.title} en Gondomar y alrededores
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function SobreMiPage() {
           <h2>Mi Historia</h2>
           <p>
             Llevo más de {business.experience} años dedicándome a la fontanería
-            en Vigo y alrededores. Comencé como aprendiz en una empresa local y,
+            en Gondomar y alrededores. Comencé como aprendiz en una empresa local y,
             con el tiempo, decidí establecerme por mi cuenta para ofrecer un
             servicio más personalizado a mis clientes.
           </p>

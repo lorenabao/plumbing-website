@@ -1,6 +1,6 @@
 # Arturo Morgadanes
 
-Professional plumber website for Arturo Morgadanes serving Vigo and surrounding areas in Galicia, Spain.
+Professional plumber website for Arturo Morgadanes serving Gondomar and surrounding areas in Galicia, Spain.
 
 ## Tech Stack
 
